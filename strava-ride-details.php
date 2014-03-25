@@ -4,7 +4,7 @@
 Plugin Name: Strava Ride Details
 Plugin URI: http://www.endocreative.com
 Description: Display Strava ride details in your pages and posts with a shortcode
-Version: 1.2
+Version: 1.2.1
 Author: Endo Creative
 Author URI: http://www.endocreative.com
 */
@@ -25,6 +25,15 @@ Author URI: http://www.endocreative.com
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+// Add settings link on plugin page
+function srd_settings_link($links) { 
+  $settings_link = '<a href="options-general.php?page=strava-ride-details/strava-ride-details.php">Settings</a>'; 
+  array_unshift($links, $settings_link); 
+  return $links; 
+}
+ 
+$plugin = plugin_basename(__FILE__); 
+add_filter("plugin_action_links_$plugin", 'srd_settings_link' );
 
 // settings page
 add_action( 'admin_menu', 'srd_create_options_page');
@@ -69,8 +78,14 @@ function srd_validate_options( $input ) {
 }
 
 function srd_section_text() {
+	?>
+	<ol>
+		<li><a target="_blank" href="http://www.strava.com/developers">Click here</a> to create an application on Strava. Make sure the redirect URI you enter is the same as your site.</li>
+		<li>Insert your Client ID and Client Secret below.</li>
+		<li>Click the button below. You will be sent to Strava to allow access to this plugin. After authorization, you will be redirected back to this settings page.</li>'
+	</ol>
 
-	echo '<p>Click the button below. You will be sent to Strava to allow access to this plugin. After authorization, you will be redirected back to this settings page.</p>';
+	<?php 
 	echo '<p><a href="https://www.strava.com/oauth/authorize?client_id=340&response_type=code&redirect_uri=' . home_url() . '/wp-admin/options-general.php?page=strava-ride-details/strava-ride-details.php&approval_prompt=force"><img src="' . plugins_url( 'images/ConnectWithStrava.png', __FILE__) . '"></a></p>';
 
 }

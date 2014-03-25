@@ -4,7 +4,7 @@ Donate link: http://endocreative.com/
 Tags: biking, strava, shortcode
 Requires at least: 3.4
 Tested up to: 3.8.1
-Stable tag: 1.2
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,8 @@ The details displayed by default are:
 *   Location
 
 Each of the details can be turned on or off. The details are displayed in an unordered list so you can style the elements however you would like using CSS.
+
+You can also choose to display units in mi/ft or km/m.
 
 While Strava does offer their own embed widget, this plugin:
 
@@ -60,8 +62,12 @@ If you would like to remove a detail, just set it to false in the shortcode. For
 
 == Changelog ==
 
+= 1.2.1 =
+* Added link to settings page on Plugins page
+* Added instructions for plugin setup on settings page
+
 = 1.2 =
-* Plugin updated to use version 3 of the Strava API.
+* Updated to use version 3 of the Strava API.
 * Added settings page
 * Added authentication with Strava via OAuth.
 * Added ability to choose either English or Metric display units in settings.
